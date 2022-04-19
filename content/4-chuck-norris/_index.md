@@ -13,6 +13,13 @@ weight = 8
 &#9744; Create a yaml file called [chuck-norris-source.kamelet.yaml](https://github.com/nexus-Six/camelk-integration-workshop/blob/master/02-kamelets-examples/chuck-norris-example/chuck-norris-source.kamelet.yaml) 
 > <span style="color:red">!!!!Add more information about creation of camelets here.!!!!!</span>
 
+As Kamelets look like any other Camel component, experienced developers will enjoy using them as much, and will quickly browse through all the already available predefined Catalog Kamelets.
+It is possible to create your own kamelets
+You can define your own library of reusable kamelets for your organisation. And desirebly, contribute them to the Camel community.
+Kamelets have two kinds of connectors, **sources** and **sinks**. Sources produce the data and sinks consume the data and optionally produce a response.
+
+ Camel provides more than 300 components out of the box, therefore we can create a Kamelet in a simple way, making use of one of the components already available. Most of the Kamelets available in the official catalog, are simple ones having only a remapping of the Kamelet properties into Camel endpoint parameters.
+
 &#9744; `oc apply -f chuck-norris-source.kamelet.yaml` - use the `kamel` to create the chuck norris source kamelet 
 > You can use `kamel init xxxx-source.kamelet.yaml / xxxx-sink.kamelet.yaml` to instantiate a kamelet template for creating your own custom kamelet. 
 
