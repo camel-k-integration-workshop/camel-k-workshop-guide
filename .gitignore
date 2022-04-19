@@ -1,1 +1,2 @@
 .github/workflows/pages.yml
+.hugo_build.lock
