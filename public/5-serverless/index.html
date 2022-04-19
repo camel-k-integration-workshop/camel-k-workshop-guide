@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.96.0" />
+    <meta name="description" content="A Camel K Workshop using OpenShift">
+<meta name="author" content="Rui, Tala, Fabian, Adrian">
+
+    <link rel="icon" href="https://devsecops-workshop.github.io/images/favicon.png" type="image/png">
+
+    <title>Task 3 - Serverless integration with Camel K :: Camel K Workshop</title>
+
+    
+    <link href="https://devsecops-workshop.github.io/css/nucleus.css?1650383185" rel="stylesheet">
+    <link href="https://devsecops-workshop.github.io/css/fontawesome-all.min.css?1650383185" rel="stylesheet">
+    <link href="https://devsecops-workshop.github.io/css/hybrid.css?1650383185" rel="stylesheet">
+    <link href="https://devsecops-workshop.github.io/css/featherlight.min.css?1650383185" rel="stylesheet">
+    <link href="https://devsecops-workshop.github.io/css/perfect-scrollbar.min.css?1650383185" rel="stylesheet">
+    <link href="https://devsecops-workshop.github.io/css/auto-complete.css?1650383185" rel="stylesheet">
+    <link href="https://devsecops-workshop.github.io/css/atom-one-dark-reasonable.css?1650383185" rel="stylesheet">
+    <link href="https://devsecops-workshop.github.io/css/theme.css?1650383185" rel="stylesheet">
+    <link href="https://devsecops-workshop.github.io/css/tabs.css?1650383185" rel="stylesheet">
+    <link href="https://devsecops-workshop.github.io/css/hugo-theme.css?1650383185" rel="stylesheet">
+    
+    <link href="https://devsecops-workshop.github.io/css/theme-red.css?1650383185" rel="stylesheet">
+    
+    
+
+    <script src="https://devsecops-workshop.github.io/js/jquery-3.3.1.min.js?1650383185"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="https://devsecops-workshop.github.io/5-serverless/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="https://devsecops-workshop.github.io/">
+    <img src="https://devsecops-workshop.github.io/images/camelk_knative.svg">
+  </a>
+
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="https://devsecops-workshop.github.io/js/lunr.min.js?1650383185"></script>
+<script type="text/javascript" src="https://devsecops-workshop.github.io/js/auto-complete.js?1650383185"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/devsecops-workshop.github.io\/";
+    
+</script>
+<script type="text/javascript" src="https://devsecops-workshop.github.io/js/search.js?1650383185"></script>
+
+    
+  </div>
+  
+    <section id="homelinks">
+      <ul>
+        <li>
+            <a class="padding" href='https://devsecops-workshop.github.io/'><i class='fas fa-home'></i> Home</a>
+        </li>
+      </ul>
+    </section>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-intro/" title="Intro" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://devsecops-workshop.github.io/1-intro/">
+          Intro
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prepare-cluster/" title="Prepare your cluster" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://devsecops-workshop.github.io/2-prepare-cluster/">
+          Prepare your cluster
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-hello-world/" title="Task 1 - Hello World" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://devsecops-workshop.github.io/3-hello-world/">
+          Task 1 - Hello World
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-chuck-norris/" title="Task 2 - Kamelet example" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://devsecops-workshop.github.io/4-chuck-norris/">
+          Task 2 - Kamelet example
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-serverless/" title="Task 3 - Serverless integration with Camel K" class="dd-item
+        parent
+        active
+        
+        ">
+      <a href="https://devsecops-workshop.github.io/5-serverless/">
+          Task 3 - Serverless integration with Camel K
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/100-playground/" title="Playground" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://devsecops-workshop.github.io/100-playground/">
+          Playground
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://devsecops-workshop.github.io/"><i class='fas fa-home'></i> Homepage</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='https://devsecops-workshop.github.io/'></a> > Task 3 - Serverless integration with Camel K
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Task 3 - Serverless integration with Camel K
+            </h1>
+          
+
+        
+
+
+
+	<p>In <a href="https://github.com/nexus-Six/camelk-integration-workshop/tree/master/03-knative-example/telegram-example/printer-example">this example</a>, we will create a simple telegram source <code>Kamelet</code> and use <code>KameletBinding</code> to bind the source to a Knative channel. Then we will create a <strong>Printer</strong> that prints out the messages sent to the telegram source.</p>
+<p>In the previous example, we&rsquo;ve talked about the concept of <code>Kamelet</code>. So what is a <code>KameletBinding</code>? A <code>KameletBinding</code> lets you tell a <code>Kamelet</code> source to send events to a destination that can be represented by a Knative channel or a Kafka topic, the same mechanism lets a <code>Kamelet</code> sink consume events from a destination. Therefore, you can use <code>KameletBindings</code> to define the high-level flows of an event-driven architecture, as you can see in the following picture, we will create all the components in the architecture together in this example.</p>
+<figure><img src="../images/camelk_workshop03_arch.png?width=50pc&amp;classes=border,shadow"/><figcaption>
+            <h4>Click image to enlarge</h4>
+        </figcaption>
+</figure>
+
+<p>First let&rsquo;s create a new project on the OpenShift cluster:</p>
+<p>☐ <code>oc new-project userX-message-printer</code> - this command will create a new project for the message printer example, alternatively you can use OpenShift web console to create a new project.</p>
+<p>☐ <code>oc get csv</code> - to make sure the Camel K and OpenShift Serverless operators are running in the namespace</p>
+<p>OpenShift Serverless provides Kubernetes native building blocks that enable us to create and deploy serverless, event-driven applications on OpenShift. It is based on the Knative project. But what is Knative? What is Serverless?</p>
+<p>Serverless is a cloud-native development model that allows developers to build and run applications without having to manage servers. Serverless offerings are usually metered on-demand through an event-driven execution model. Serverless applications are deployed in containers that automatically launch on demand when needed.</p>
+<p>Knative is an open source project that helps us deploy, run, manage serverless applications on Kubernetes or OpenShift. For serverless applications, Your code only runs when it needs to, with Knative starting and stopping instances automatically. How does it achieve this? Now we need to talk about the two important components of Knative: Serving and Eventing.</p>
+<ul>
+<li>Serving - Enables rapid deployment of containers and automatic scaling of pods through a request-driven model for serving workloads based on demand.</li>
+<li>Eventing - An infrastructure for consuming and producing events to stimulate serverless apps. Apps can be triggered by a variety of sources, e.g. AMQ Streams, events from your own apps.</li>
+</ul>
+<p>☐ Create both instances of Knative Serving and Eventing via OpenShift Serverless operator on the web console</p>
+<p>☐  <code>oc apply -f telegram-simple-source.kamelet.yaml</code> - create a <a href="https://github.com/nexus-Six/camelk-integration-workshop/blob/master/03-knative-example/telegram-example/printer-example/telegram-simple-source.kamelet.yaml">telegram-simple-source.kamelet.yaml</a></p>
+<pre tabindex="0"><code>spec:
+  definition:
+    title: &#34;Telegram Source&#34;
+    description: |-
+      Receive all messages that people send to your Telegram bot.
+      To create a bot, contact the @botfather account using the Telegram app.
+      The source attaches the following headers to the messages:
+      - `chat-id` / `ce-chat-id`: the ID of the chat where the message comes from
+    required:
+      - authorizationToken
+    type: object
+    properties:
+      authorizationToken:
+        title: Token
+        description: The token to access your bot on Telegram. You you can obtain it from the Telegram @botfather.
+        type: string
+        format: password
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:password
+</code></pre><p>This section is a simple definition of the Telegram source, it will retrieve all the messages sent to the Telegram bot. Importantly, we want to configure the source correctly by specifying the required property which is <code>authorizationToken</code>, which allows us to access the bot.</p>
+<pre tabindex="0"><code>flow:
+    from:
+      uri: telegram:bots
+      parameters:
+        authorizationToken: &#34;{{authorizationToken}}&#34;
+      steps:
+        - convert-body-to:
+            type: &#34;java.lang.String&#34;
+            charset: &#34;UTF8&#34;
+        - filter:
+            simple: &#34;${body} != null&#34;
+        - log: &#34;${body}&#34;
+        - to: &#34;kamelet:sink&#34;
+</code></pre><p>The <code>flow</code> section defines the integration flow. In this case, it goes from the Telegram bot, and will go through the steps defined in the <code>steps</code>, finally ends up in the <code>kamelet:sink</code>.</p>
+<p>☐ <code>oc get kamelets</code> - check if the source kamelet is ready <br>
+☐ <code>oc apply -f telegram-channel.yaml</code> - create a <a href="https://github.com/nexus-Six/camelk-integration-workshop/blob/master/03-knative-example/telegram-example/printer-example/telegram-channel.yaml">Knative InMemory Channel</a> on the cluster <br>
+☐ <code>oc apply -f telegram-source-binding.yaml</code>  - create a <a href="https://github.com/nexus-Six/camelk-integration-workshop/blob/master/03-knative-example/telegram-example/printer-example/telegram-source-binding.yaml">telegram-source-binding.yaml</a> that binds the Knative channel to the telegram source</p>
+<blockquote>
+<p>Please replace the <code>&lt;your-bot-token&gt;</code> to your actual bot token!</p>
+</blockquote>
+<pre tabindex="0"><code>source:
+  ref:
+    kind: Kamelet
+    apiVersion: camel.apache.org/v1alpha1
+    name: telegram-simple-source
+  properties:
+    authorizationToken: &#34;&lt;your-bot-token&gt;&#34;
+</code></pre><p>This <code>source</code> section shows us how to refer the <code>Kamelet</code> source using the property <code>authorizationToken</code>, this makes sure that messages produced by the Telegram source are forwarded to the Knative InMemoryChannel named &ldquo;telegram&rdquo;, which is referred in the <code>sink</code> section (see the following code block).</p>
+<pre tabindex="0"><code>sink:
+  ref:
+    apiVersion: messaging.knative.dev/v1
+    kind: InMemoryChannel
+    name: telegram
+</code></pre><p>☐ <code>oc get integrations</code> - check the status of the KameletBinding</p>
+<p>☐ kamel run <a href="https://github.com/nexus-Six/camelk-integration-workshop/blob/master/03-knative-example/telegram-example/printer-example/printer.groovy">printer.groovy</a> - create the integration that prints out the messages sent to the telegram bot</p>
+<pre tabindex="0"><code>from(&#39;knative:channel/telegram&#39;)
+  .convertBodyTo(String.class)
+  .to(&#39;log:info&#39;)
+</code></pre><p>Here we create the simple event consumer that takes the messages from the Knative Channel and then print them out in the log.</p>
+<p>☐ Send some messages to your telegram bot <br>
+☐ <code>kamel logs printer</code> - check the logs of the printer</p>
+<blockquote>
+<p>You can also go to the OpenShift web console and check the logs of Printer pod.
+knative Serving enables autoscaling of the applications and it is event driven, so if we don’t send any messages from now on, you should see the pod scale down to 0 automatically, maybe we need to wait for a bit.</p>
+</blockquote>
+<p>☐ Stop sending messages to the telegram bot</p>
+<blockquote>
+<p>Printer pod autoscales to zero
+If you want to trigger the printer running again, you can simply send the message to the bot again, and after a few second, you should see the printer pod will start scaling up again.</p>
+</blockquote>
+<p>☐ <code>oc delete project userX-message-printer</code> - clean up the namespace</p>
+<p>Congrats!! We’ve achieved the final example!</p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="https://devsecops-workshop.github.io/4-chuck-norris/" title="Task 2 - Kamelet example"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="https://devsecops-workshop.github.io/100-playground/" title="Playground" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="https://devsecops-workshop.github.io/js/clipboard.min.js?1650383185"></script>
+    <script src="https://devsecops-workshop.github.io/js/perfect-scrollbar.min.js?1650383185"></script>
+    <script src="https://devsecops-workshop.github.io/js/perfect-scrollbar.jquery.min.js?1650383185"></script>
+    <script src="https://devsecops-workshop.github.io/js/jquery.sticky.js?1650383185"></script>
+    <script src="https://devsecops-workshop.github.io/js/featherlight.min.js?1650383185"></script>
+    <script src="https://devsecops-workshop.github.io/js/highlight.pack.js?1650383185"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://devsecops-workshop.github.io/js/modernizr.custom-3.6.0.js?1650383185"></script>
+    <script src="https://devsecops-workshop.github.io/js/learn.js?1650383185"></script>
+    <script src="https://devsecops-workshop.github.io/js/hugo-learn.js?1650383185"></script>
+    
+        
+            <script src="https://devsecops-workshop.github.io/mermaid/mermaid.js?1650383185"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
