@@ -1,7 +1,7 @@
-baseurl = "https://camel-k-workshop.github.io/"
+baseurl = "https://camel-k-integration-workshop.github.io/camel-k-workshop.github.io/"
 contentdir    = "content"
 layoutdir     = "layouts"
-publishdir    = "public"
+publishdir    = "docs"
 title = "Camel K Workshop"
 canonifyurls = true
 paginate = 10
@@ -29,7 +29,7 @@ home = [ "HTML", "RSS", "JSON"]
 
 [[menu.shortcuts]]
 name = "<i class='fas fa-home'></i> Homepage"
-url = "https://camel-k-workshop.github.io/"
+url = "https://camel-k-integration-workshop.github.io/camel-k-workshop.github.io/"
 weight = 10
 
 [markup]

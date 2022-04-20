@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://camel-k-integration-workshop.github.io/camel-k-workshop.github.io/1-intro/</loc>
+  </url><url>
+    <loc>https://camel-k-integration-workshop.github.io/camel-k-workshop.github.io/2-prepare-cluster/</loc>
+  </url><url>
+    <loc>https://camel-k-integration-workshop.github.io/camel-k-workshop.github.io/3-hello-world/</loc>
+  </url><url>
+    <loc>https://camel-k-integration-workshop.github.io/camel-k-workshop.github.io/4-chuck-norris/</loc>
+  </url><url>
+    <loc>https://camel-k-integration-workshop.github.io/camel-k-workshop.github.io/5-serverless/</loc>
+  </url><url>
+    <loc>https://camel-k-integration-workshop.github.io/camel-k-workshop.github.io/</loc>
+    <priority>0</priority>
+  </url><url>
+    <loc>https://camel-k-integration-workshop.github.io/camel-k-workshop.github.io/categories/</loc>
+  </url><url>
+    <loc>https://camel-k-integration-workshop.github.io/camel-k-workshop.github.io/tags/</loc>
+  </url>
+</urlset>

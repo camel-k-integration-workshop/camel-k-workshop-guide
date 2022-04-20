@@ -26,4 +26,4 @@ This workshop aims to help gain your first hands-on experience with Camel K and 
 
 ## Collaboration
 This workshop was created by Rui Zhang, Tala Ismail, Fabian Popp and Adrian Luberda.  
-Feel free to create a pull request or an issue in [GitHub](https://github.com/nexus-Six/camelk-integration-workshop).
+Feel free to create a pull request or an issue in [GitHub](https://github.com/camel-k-integration-workshop/camel-k-workshop).
